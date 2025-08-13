@@ -1,0 +1,79 @@
+---
+alwaysApply: true
+---
+# 개발 가이드라인 및 코딩 컨벤션
+
+## 파일 명명 규칙
+- **컴포넌트 파일**: kebab-case 사용 (예: `blog-header.tsx`, `city-card.tsx`)
+- **훅 파일**: kebab-case 사용 (예: `use-mobile.ts`, `use-toast.ts`)
+- **유틸리티 파일**: kebab-case 사용 (예: `utils.ts`)
+
+## TypeScript 가이드라인
+- 엄격한 타입 체크 사용 (`strict: true`)
+- 명시적 타입 정의 선호
+- 인터페이스와 타입 별칭 적절히 활용
+- 제네릭 타입 활용하여 재사용성 향상
+
+## React 컴포넌트 규칙
+- 함수형 컴포넌트 사용
+- Props 인터페이스 명시적 정의
+- React.FC 타입 사용 지양 (children 타입 문제)
+- 컴포넌트 내부 상태는 useState 훅 사용
+- 복잡한 로직은 useMemo, useCallback 활용
+
+## 상태 관리
+- 로컬 상태: useState 훅
+- 복잡한 상태 로직: useReducer 고려
+- 전역 상태: 필요시 Context API 또는 상태 관리 라이브러리
+
+## 스타일링 규칙
+- Tailwind CSS 클래스 우선 사용
+- 컴포넌트별 스타일은 className prop으로 전달
+- 반응형 디자인: sm:, md:, lg:, xl: 브레이크포인트 활용
+- 일관된 색상 팔레트 사용 (blue-600, gray-900 등)
+
+## 컴포넌트 구조
+```tsx
+// 1. Import statements
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+
+// 2. Type definitions
+interface ComponentProps {
+  title: string
+  onAction: () => void
+}
+
+// 3. Component function
+export function Component({ title, onAction }: ComponentProps) {
+  // 4. State and hooks
+  const [isActive, setIsActive] = useState(false)
+  
+  // 5. Event handlers
+  const handleClick = () => {
+    setIsActive(!isActive)
+    onAction()
+  }
+  
+  // 6. Render
+  return (
+    <div className="p-4 bg-white rounded-lg shadow-md">
+      <h2 className="text-xl font-bold text-gray-900">{title}</h2>
+      <Button onClick={handleClick} className="mt-4">
+        Action
+      </Button>
+    </div>
+  )
+}
+```
+
+## 에러 처리
+- TypeScript 컴파일 에러 해결 우선
+- 런타임 에러 방지를 위한 타입 가드 사용
+- 사용자 친화적인 에러 메시지 제공
+
+## 성능 최적화
+- 불필요한 리렌더링 방지
+- useMemo, useCallback 적절히 활용
+- 이미지 최적화 (Next.js Image 컴포넌트 고려)
+- 코드 스플리팅 및 지연 로딩 활용

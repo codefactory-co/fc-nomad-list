@@ -1,0 +1,11 @@
+id,name,country,continent,latitude,longitude,image,overallScore,monthlyCostUsd,internetSpeedMbps,safetyLevel,safetyScore,temperature,weatherCondition,airQualityIndex,visaRequirement,popularityRank,isFavorite
+bangkok,방콕,태국,asia,13.7563,100.5018,/city/bangkok.jpg,4.5,1508,25,Good,75,33,sunny,34,Visa on arrival,1,FALSE
+lisbon,리스본,포르투갈,europe,38.7223,-9.1393,/city/lisbon.jpg,4.3,2200,45,Excellent,95,22,partly-cloudy,15,EU passport,2,TRUE
+mexico-city,멕시코시티,멕시코,north-america,19.4326,-99.1332,/city/mexico-city.jpg,4.2,1200,30,Fair,70,25,cloudy,85,Tourist visa,5,FALSE
+cape-town,케이프타운,남아프리카공화국,africa,-33.9249,18.4241,/city/cape-town.jpg,4.1,1800,20,Fair,55,18,sunny,25,Visa required,8,FALSE
+buenos-aires,부에노스아이레스,아르헨티나,south-america,-34.6037,-58.3816,/city/buenos-aires.jpg,4,1400,35,Good,70,20,rainy,45,Tourist visa,6,FALSE
+dubai,두바이,아랍에미리트,middle-east,25.2048,55.2708,/city/dubai.jpg,4.4,3500,80,Excellent,90,35,sunny,55,Visa on arrival,3,FALSE
+sydney,시드니,호주,oceania,-33.8688,151.2093,/city/sydney.jpg,4.6,5200,50,Excellent,92,24,sunny,12,Work visa,4,TRUE
+bali,발리,인도네시아,asia,-8.3405,115.092,/city/bali.jpg,4.1,1100,20,Good,78,30,partly-cloudy,28,Visa on arrival,7,FALSE
+berlin,베를린,독일,europe,52.52,13.405,/city/berlin.jpg,4.3,2800,60,Excellent,88,15,cloudy,22,EU passport,9,FALSE
+tokyo,도쿄,일본,asia,35.6762,139.6503,/city/tokyo.jpg,4.7,3800,95,Excellent,98,28,partly-cloudy,35,Tourist visa,10,FALSE

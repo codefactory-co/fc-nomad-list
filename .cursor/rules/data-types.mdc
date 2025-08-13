@@ -1,0 +1,153 @@
+---
+alwaysApply: true
+---
+# 데이터 타입 및 인터페이스 가이드
+
+## 핵심 데이터 타입
+프로젝트에서 사용하는 주요 타입 정의들을 참조하세요.
+
+### City 타입
+[app/page.tsx](mdc:app/page.tsx)에서 정의된 도시 정보 타입:
+
+```typescript
+type City = {
+  id: string                    // 도시 고유 식별자
+  name: string                  // 도시 이름 (한국어)
+  country: string               // 국가명
+  continent: string             // 대륙 ID
+  coordinates: {                // 좌표 정보
+    lat: number
+    lng: number
+  }
+  image: string                 // 도시 이미지 경로
+  overallScore: number          // 종합 점수 (1-5)
+  monthlyCostUsd: number        // 월 생활비 (USD)
+  internetSpeedMbps: number     // 인터넷 속도 (Mbps)
+  safetyLevel: string           // 안전도 레벨 (Excellent/Good/Fair)
+  safetyScore: number           // 안전도 점수 (0-100)
+  currentWeather: {             // 현재 날씨 정보
+    temperature: number          // 온도 (°C)
+    condition: string           // 날씨 상태
+  }
+  airQualityIndex: number       // 대기질 지수
+  visaRequirement: string       // 비자 요구사항
+  popularityRank: number        // 인기도 순위
+  isFavorite: boolean           // 즐겨찾기 여부
+}
+```
+
+### Continent 타입
+대륙 정보를 정의하는 타입:
+
+```typescript
+type Continent = {
+  id: string                    // 대륙 식별자
+  name: string                  // 대륙 이름 (한국어)
+  emoji: string                 // 대륙 이모지
+  englishName: string           // 영어 이름
+}
+```
+
+### SortOption 타입
+정렬 옵션을 정의하는 타입:
+
+```typescript
+type SortOption = {
+  id: string                    // 정렬 옵션 ID
+  name: string                  // 표시 이름
+  key: keyof City | "recommended" // 정렬 기준 키
+  order: "asc" | "desc"        // 정렬 순서
+}
+```
+
+## 데이터 구조 예시
+
+### 샘플 도시 데이터
+```typescript
+const sampleCities: City[] = [
+  {
+    id: "bangkok",
+    name: "방콕",
+    country: "태국",
+    continent: "asia",
+    coordinates: { lat: 13.7563, lng: 100.5018 },
+    image: "/city/bangkok.jpg",
+    overallScore: 4.5,
+    monthlyCostUsd: 1508,
+    internetSpeedMbps: 25,
+    safetyLevel: "Good",
+    safetyScore: 75,
+    currentWeather: { temperature: 33, condition: "sunny" },
+    airQualityIndex: 34,
+    visaRequirement: "Visa on arrival",
+    popularityRank: 1,
+    isFavorite: false,
+  }
+  // ... 더 많은 도시들
+]
+```
+
+### 대륙 데이터
+```typescript
+const continents: Continent[] = [
+  { id: "all", name: "전체", emoji: "🌍", englishName: "Global" },
+  { id: "asia", name: "아시아", emoji: "⛩️", englishName: "Asia" },
+  { id: "europe", name: "유럽", emoji: "🇪🇺", englishName: "Europe" },
+  // ... 더 많은 대륙들
+]
+```
+
+### 정렬 옵션
+```typescript
+const sortOptions: SortOption[] = [
+  { id: "recommended", name: "추천순", key: "recommended", order: "desc" },
+  { id: "cost-low", name: "생활비 낮은순", key: "monthlyCostUsd", order: "asc" },
+  { id: "internet-fast", name: "인터넷 속도 빠른순", key: "internetSpeedMbps", order: "desc" },
+  { id: "safety-high", name: "안전도 높은순", key: "safetyScore", order: "desc" },
+]
+```
+
+## 타입 사용 가이드라인
+
+### 1. 타입 안전성
+- 모든 데이터는 명시적으로 타입 정의
+- any 타입 사용 지양
+- 제네릭 타입 활용하여 재사용성 향상
+
+### 2. 인터페이스 확장
+```typescript
+// 기본 도시 정보
+interface BaseCity {
+  id: string
+  name: string
+  country: string
+}
+
+// 상세 도시 정보 (기본 정보 확장)
+interface DetailedCity extends BaseCity {
+  coordinates: { lat: number; lng: number }
+  monthlyCostUsd: number
+  internetSpeedMbps: number
+}
+```
+
+### 3. 유니온 타입 활용
+```typescript
+type WeatherCondition = "sunny" | "partly-cloudy" | "cloudy" | "rainy"
+type SafetyLevel = "Excellent" | "Good" | "Fair" | "Poor"
+type ContinentId = "asia" | "europe" | "north-america" | "south-america" | "africa" | "middle-east" | "oceania"
+```
+
+### 4. 옵셔널 프로퍼티
+```typescript
+interface CityFilters {
+  continent?: string           // 선택적 대륙 필터
+  maxCost?: number            // 선택적 최대 비용
+  minInternetSpeed?: number   // 선택적 최소 인터넷 속도
+}
+```
+
+## 데이터 검증
+- Zod 스키마를 활용한 런타임 데이터 검증
+- TypeScript 컴파일 타임 타입 체크
+- 사용자 입력 데이터의 유효성 검사

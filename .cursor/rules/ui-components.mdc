@@ -1,0 +1,237 @@
+---
+description: UI를 새로 만들거나 수정할때
+alwaysApply: false
+---
+# UI 컴포넌트 가이드라인
+
+## shadcn/ui 컴포넌트 사용법
+이 프로젝트는 shadcn/ui 컴포넌트 라이브러리를 기반으로 구축되었습니다.
+
+### 주요 UI 컴포넌트
+- **Button**: [components/ui/button.tsx](mdc:components/ui/button.tsx) - 모든 버튼 스타일링
+- **Card**: [components/ui/card.tsx](mdc:components/ui/card.tsx) - 카드 레이아웃
+- **Select**: [components/ui/select.tsx](mdc:components/ui/select.tsx) - 드롭다운 선택
+- **Input**: [components/ui/input.tsx](mdc:components/ui/input.tsx) - 입력 필드
+- **Dialog**: [components/ui/dialog.tsx](mdc:components/ui/dialog.tsx) - 모달 다이얼로그
+- **Toast**: [components/ui/toast.tsx](mdc:components/ui/toast.tsx) - 알림 메시지
+
+### 컴포넌트 사용 예시
+```tsx
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+
+// Button 사용
+<Button variant="default" size="lg" className="bg-blue-600 hover:bg-blue-700">
+  클릭하세요
+</Button>
+
+// Card 사용
+<Card className="hover:shadow-lg transition-shadow">
+  <CardHeader>
+    <CardTitle>카드 제목</CardTitle>
+  </CardHeader>
+  <CardContent>
+    <p>카드 내용</p>
+  </CardContent>
+</Card>
+
+// Select 사용
+<Select value={value} onValueChange={setValue}>
+  <SelectTrigger>
+    <SelectValue placeholder="옵션 선택" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="option1">옵션 1</SelectItem>
+    <SelectItem value="option2">옵션 2</SelectItem>
+  </SelectContent>
+</Select>
+```
+
+## 아이콘 사용법
+- **Lucide React**: [components/ui/button.tsx](mdc:components/ui/button.tsx)에서 사용 예시 참조
+- 일관된 아이콘 크기: w-4 h-4 (작은), w-6 h-6 (중간), w-8 h-8 (큰)
+
+```tsx
+import { Heart, Star, DollarSign, Wifi, Shield } from "lucide-react"
+
+// 아이콘 사용 예시
+<Heart className="w-4 h-4 fill-red-500 text-red-500" />
+<Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+<DollarSign className="w-4 h-4 text-green-600" />
+```
+
+## 색상 팔레트
+프로젝트에서 사용하는 일관된 색상 체계:
+
+### 주요 색상
+- **Primary**: blue-600, blue-700 (버튼, 링크, 강조)
+- **Secondary**: gray-100, gray-200, gray-300 (배경, 테두리)
+- **Text**: gray-900 (제목), gray-700 (본문), gray-600 (부가 정보)
+- **Success**: green-600 (긍정적 상태)
+- **Warning**: yellow-600 (주의 상태)
+- **Error**: red-500 (에러 상태)
+
+### 색상 사용 예시
+```tsx
+// 버튼
+className="bg-blue-600 hover:bg-blue-700 text-white"
+
+// 카드
+className="bg-white border-gray-200 hover:border-blue-300"
+
+// 텍스트
+className="text-gray-900 font-bold" // 제목
+className="text-gray-700" // 본문
+className="text-gray-600 text-sm" // 부가 정보
+```
+
+## 반응형 디자인
+Tailwind CSS 브레이크포인트를 활용한 반응형 디자인:
+
+```tsx
+// 기본 (모바일 우선)
+className="text-sm p-2"
+
+// 작은 화면 이상
+className="text-sm p-2 sm:text-base sm:p-3"
+
+// 중간 화면 이상
+className="text-sm p-2 sm:text-base sm:p-3 md:text-lg md:p-4"
+
+// 큰 화면 이상
+className="text-sm p-2 sm:text-base sm:p-3 md:text-lg md:p-4 lg:text-xl lg:p-6"
+```
+
+## 애니메이션 및 전환
+일관된 사용자 경험을 위한 애니메이션:
+
+```tsx
+// 호버 효과
+className="hover:scale-105 hover:shadow-lg transition-all duration-300"
+
+// 페이드 인
+className="animate-in fade-in duration-500"
+
+// 바운스 효과
+className="animate-bounce"
+
+// 펄스 효과
+className="animate-pulse"
+```# UI 컴포넌트 가이드라인
+
+## shadcn/ui 컴포넌트 사용법
+이 프로젝트는 shadcn/ui 컴포넌트 라이브러리를 기반으로 구축되었습니다.
+
+### 주요 UI 컴포넌트
+- **Button**: [components/ui/button.tsx](mdc:components/ui/button.tsx) - 모든 버튼 스타일링
+- **Card**: [components/ui/card.tsx](mdc:components/ui/card.tsx) - 카드 레이아웃
+- **Select**: [components/ui/select.tsx](mdc:components/ui/select.tsx) - 드롭다운 선택
+- **Input**: [components/ui/input.tsx](mdc:components/ui/input.tsx) - 입력 필드
+- **Dialog**: [components/ui/dialog.tsx](mdc:components/ui/dialog.tsx) - 모달 다이얼로그
+- **Toast**: [components/ui/toast.tsx](mdc:components/ui/toast.tsx) - 알림 메시지
+
+### 컴포넌트 사용 예시
+```tsx
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+
+// Button 사용
+<Button variant="default" size="lg" className="bg-blue-600 hover:bg-blue-700">
+  클릭하세요
+</Button>
+
+// Card 사용
+<Card className="hover:shadow-lg transition-shadow">
+  <CardHeader>
+    <CardTitle>카드 제목</CardTitle>
+  </CardHeader>
+  <CardContent>
+    <p>카드 내용</p>
+  </CardContent>
+</Card>
+
+// Select 사용
+<Select value={value} onValueChange={setValue}>
+  <SelectTrigger>
+    <SelectValue placeholder="옵션 선택" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="option1">옵션 1</SelectItem>
+    <SelectItem value="option2">옵션 2</SelectItem>
+  </SelectContent>
+</Select>
+```
+
+## 아이콘 사용법
+- **Lucide React**: [components/ui/button.tsx](mdc:components/ui/button.tsx)에서 사용 예시 참조
+- 일관된 아이콘 크기: w-4 h-4 (작은), w-6 h-6 (중간), w-8 h-8 (큰)
+
+```tsx
+import { Heart, Star, DollarSign, Wifi, Shield } from "lucide-react"
+
+// 아이콘 사용 예시
+<Heart className="w-4 h-4 fill-red-500 text-red-500" />
+<Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+<DollarSign className="w-4 h-4 text-green-600" />
+```
+
+## 색상 팔레트
+프로젝트에서 사용하는 일관된 색상 체계:
+
+### 주요 색상
+- **Primary**: blue-600, blue-700 (버튼, 링크, 강조)
+- **Secondary**: gray-100, gray-200, gray-300 (배경, 테두리)
+- **Text**: gray-900 (제목), gray-700 (본문), gray-600 (부가 정보)
+- **Success**: green-600 (긍정적 상태)
+- **Warning**: yellow-600 (주의 상태)
+- **Error**: red-500 (에러 상태)
+
+### 색상 사용 예시
+```tsx
+// 버튼
+className="bg-blue-600 hover:bg-blue-700 text-white"
+
+// 카드
+className="bg-white border-gray-200 hover:border-blue-300"
+
+// 텍스트
+className="text-gray-900 font-bold" // 제목
+className="text-gray-700" // 본문
+className="text-gray-600 text-sm" // 부가 정보
+```
+
+## 반응형 디자인
+Tailwind CSS 브레이크포인트를 활용한 반응형 디자인:
+
+```tsx
+// 기본 (모바일 우선)
+className="text-sm p-2"
+
+// 작은 화면 이상
+className="text-sm p-2 sm:text-base sm:p-3"
+
+// 중간 화면 이상
+className="text-sm p-2 sm:text-base sm:p-3 md:text-lg md:p-4"
+
+// 큰 화면 이상
+className="text-sm p-2 sm:text-base sm:p-3 md:text-lg md:p-4 lg:text-xl lg:p-6"
+```
+
+## 애니메이션 및 전환
+일관된 사용자 경험을 위한 애니메이션:
+
+```tsx
+// 호버 효과
+className="hover:scale-105 hover:shadow-lg transition-all duration-300"
+
+// 페이드 인
+className="animate-in fade-in duration-500"
+
+// 바운스 효과
+className="animate-bounce"
+
+// 펄스 효과
+className="animate-pulse"
+```
