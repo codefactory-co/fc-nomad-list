@@ -98,7 +98,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <BackgroundPaths title="노마드 리스트" onButtonClick={scrollToExplore} />
+      <BackgroundPaths title="노마드 리스트!!!" onButtonClick={scrollToExplore} />
 
       {/* First Subscription Form Section */}
       <SubscriptionForm />
